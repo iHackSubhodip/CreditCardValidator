@@ -16,12 +16,47 @@
                     <view key="view" contentMode="scaleToFill" id="s6S-DP-Zbv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your Credit Card." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-kx-ukL">
+                                <rect key="frame" x="10" y="45" width="355" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="M4Y-93-UZR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r05-CE-pt8" customClass="CreditCardView" customModule="CreditCardValidator" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="110" width="300" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="1vE-rz-pMz"/>
+                                    <constraint firstAttribute="width" constant="300" id="CVZ-6h-BIJ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will deposit INR 1 to your account." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSj-nY-Huc">
+                                <rect key="frame" x="37.5" y="381" width="201" height="14.5"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="r05-CE-pt8" firstAttribute="centerX" secondItem="Zqx-kx-ukL" secondAttribute="centerX" id="5Wa-RJ-cOW"/>
+                            <constraint firstItem="Q31-TH-Lph" firstAttribute="trailing" secondItem="Zqx-kx-ukL" secondAttribute="trailing" constant="10" id="Elo-6x-v5r"/>
+                            <constraint firstItem="Zqx-kx-ukL" firstAttribute="leading" secondItem="Q31-TH-Lph" secondAttribute="leading" constant="10" id="ZBh-zZ-fjl"/>
+                            <constraint firstItem="oSj-nY-Huc" firstAttribute="top" secondItem="r05-CE-pt8" secondAttribute="bottom" constant="21" id="otg-VR-Hkh"/>
+                            <constraint firstItem="r05-CE-pt8" firstAttribute="top" secondItem="Zqx-kx-ukL" secondAttribute="bottom" constant="25" id="soc-gU-jXl"/>
+                            <constraint firstItem="oSj-nY-Huc" firstAttribute="leading" secondItem="r05-CE-pt8" secondAttribute="leading" id="w4u-Jd-145"/>
+                            <constraint firstItem="Zqx-kx-ukL" firstAttribute="top" secondItem="Q31-TH-Lph" secondAttribute="top" constant="25" id="we3-wq-Kfb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Q31-TH-Lph"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJL-gH-Sdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
         </scene>
     </scenes>
 </document>
