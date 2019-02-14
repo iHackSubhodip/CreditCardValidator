@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		905F9F5B2215544B0031AAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905F9F5A2215544B0031AAA2 /* AppDelegate.swift */; };
-		905F9F5D2215544B0031AAA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905F9F5C2215544B0031AAA2 /* ViewController.swift */; };
-		905F9F602215544B0031AAA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F5E2215544B0031AAA2 /* Main.storyboard */; };
 		905F9F622215544D0031AAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F612215544D0031AAA2 /* Assets.xcassets */; };
 		905F9F652215544D0031AAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F632215544D0031AAA2 /* LaunchScreen.storyboard */; };
 		905F9F702215544D0031AAA2 /* CreditCardValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905F9F6F2215544D0031AAA2 /* CreditCardValidatorTests.swift */; };
+		90B34EC422156C580073C23E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B34EC322156C580073C23E /* BaseViewController.swift */; };
+		90B34EC722156D020073C23E /* BaseView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B34EC622156D020073C23E /* BaseView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +28,14 @@
 /* Begin PBXFileReference section */
 		905F9F572215544B0031AAA2 /* CreditCardValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreditCardValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		905F9F5A2215544B0031AAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		905F9F5C2215544B0031AAA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		905F9F5F2215544B0031AAA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		905F9F612215544D0031AAA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		905F9F642215544D0031AAA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		905F9F662215544D0031AAA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		905F9F6B2215544D0031AAA2 /* CreditCardValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreditCardValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		905F9F6F2215544D0031AAA2 /* CreditCardValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidatorTests.swift; sourceTree = "<group>"; };
 		905F9F712215544D0031AAA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90B34EC322156C580073C23E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		90B34EC622156D020073C23E /* BaseView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = BaseView.storyboard; path = CreditCardValidator/StoryBoards/BaseView.storyboard; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				905F9F5A2215544B0031AAA2 /* AppDelegate.swift */,
-				905F9F5C2215544B0031AAA2 /* ViewController.swift */,
-				905F9F5E2215544B0031AAA2 /* Main.storyboard */,
-				905F9F612215544D0031AAA2 /* Assets.xcassets */,
-				905F9F632215544D0031AAA2 /* LaunchScreen.storyboard */,
 				905F9F662215544D0031AAA2 /* Info.plist */,
+				90B34EC522156CB30073C23E /* StoryBoards */,
+				90B34EC222156C1A0073C23E /* View */,
+				90B34EC122156C0B0073C23E /* Controller */,
+				90B34EC822156E910073C23E /* Assets */,
 			);
 			path = CreditCardValidator;
 			sourceTree = "<group>";
@@ -94,6 +94,38 @@
 				905F9F712215544D0031AAA2 /* Info.plist */,
 			);
 			path = CreditCardValidatorTests;
+			sourceTree = "<group>";
+		};
+		90B34EC122156C0B0073C23E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				90B34EC322156C580073C23E /* BaseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		90B34EC222156C1A0073C23E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		90B34EC522156CB30073C23E /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				905F9F632215544D0031AAA2 /* LaunchScreen.storyboard */,
+				90B34EC622156D020073C23E /* BaseView.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		90B34EC822156E910073C23E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				905F9F612215544D0031AAA2 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,8 +210,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				905F9F652215544D0031AAA2 /* LaunchScreen.storyboard in Resources */,
+				90B34EC722156D020073C23E /* BaseView.storyboard in Resources */,
 				905F9F622215544D0031AAA2 /* Assets.xcassets in Resources */,
-				905F9F602215544B0031AAA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +229,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				905F9F5D2215544B0031AAA2 /* ViewController.swift in Sources */,
 				905F9F5B2215544B0031AAA2 /* AppDelegate.swift in Sources */,
+				90B34EC422156C580073C23E /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,14 +253,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		905F9F5E2215544B0031AAA2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				905F9F5F2215544B0031AAA2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		905F9F632215544D0031AAA2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
