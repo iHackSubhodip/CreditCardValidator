@@ -28,7 +28,7 @@
 /* Begin PBXFileReference section */
 		905F9F572215544B0031AAA2 /* CreditCardValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreditCardValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		905F9F5A2215544B0031AAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		905F9F612215544D0031AAA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		905F9F612215544D0031AAA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CreditCardValidator/Assets/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		905F9F642215544D0031AAA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		905F9F662215544D0031AAA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		905F9F6B2215544D0031AAA2 /* CreditCardValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreditCardValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,9 +79,9 @@
 			children = (
 				905F9F5A2215544B0031AAA2 /* AppDelegate.swift */,
 				905F9F662215544D0031AAA2 /* Info.plist */,
-				90B34EC522156CB30073C23E /* StoryBoards */,
-				90B34EC222156C1A0073C23E /* View */,
 				90B34EC122156C0B0073C23E /* Controller */,
+				90B34EC222156C1A0073C23E /* View */,
+				90B34EC522156CB30073C23E /* StoryBoards */,
 				90B34EC822156E910073C23E /* Assets */,
 			);
 			path = CreditCardValidator;
