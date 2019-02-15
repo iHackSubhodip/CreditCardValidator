@@ -11,26 +11,29 @@ import Foundation
 
 @IBDesignable
 class CreditCardBaseView: UIView {}
+@IBDesignable
+class CreditCardFrontView: UIView {}
 
 @IBDesignable
 class CreditCardView: UIView {
 
     let creditCardBaseView: CreditCardBaseView = {
         let baseView = CreditCardBaseView()
-        baseView.translatesAutoresizingMaskIntoConstraints = false
-        baseView.layer.cornerRadius = 6
         baseView.frame = .zero
+        baseView.layer.cornerRadius = 6
         baseView.clipsToBounds = true
-        baseView.backgroundColor = .clear
+        baseView.translatesAutoresizingMaskIntoConstraints = false
         return baseView
     }()
     
-    let creditCardFrontView: UIView = {
-        let creditCardFrontView = UIView()
-        creditCardFrontView.translatesAutoresizingMaskIntoConstraints = false
-        creditCardFrontView.layer.cornerRadius = 6
+    let creditCardFrontView: CreditCardFrontView = {
+        let creditCardFrontView = CreditCardFrontView()
         creditCardFrontView.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
+        creditCardFrontView.layer.cornerRadius = 6
         creditCardFrontView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
+        creditCardFrontView.layer.cornerRadius = 6
+        creditCardFrontView.clipsToBounds = true
+        creditCardFrontView.translatesAutoresizingMaskIntoConstraints = false
         return creditCardFrontView
     }()
     

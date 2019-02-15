@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,14 +28,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r05-CE-pt8" customClass="CreditCardView" customModule="CreditCardValidator" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="110" width="300" height="250"/>
+                                <rect key="frame" x="37.5" y="105" width="300" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="1vE-rz-pMz"/>
                                     <constraint firstAttribute="width" constant="300" id="CVZ-6h-BIJ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will deposit INR 1 to your account." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSj-nY-Huc">
-                                <rect key="frame" x="37.5" y="381" width="201" height="14.5"/>
+                                <rect key="frame" x="37.5" y="376" width="201" height="14.5"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,7 +47,7 @@
                             <constraint firstItem="Q31-TH-Lph" firstAttribute="trailing" secondItem="Zqx-kx-ukL" secondAttribute="trailing" constant="10" id="Elo-6x-v5r"/>
                             <constraint firstItem="Zqx-kx-ukL" firstAttribute="leading" secondItem="Q31-TH-Lph" secondAttribute="leading" constant="10" id="ZBh-zZ-fjl"/>
                             <constraint firstItem="oSj-nY-Huc" firstAttribute="top" secondItem="r05-CE-pt8" secondAttribute="bottom" constant="21" id="otg-VR-Hkh"/>
-                            <constraint firstItem="r05-CE-pt8" firstAttribute="top" secondItem="Zqx-kx-ukL" secondAttribute="bottom" constant="25" id="soc-gU-jXl"/>
+                            <constraint firstItem="r05-CE-pt8" firstAttribute="top" secondItem="Zqx-kx-ukL" secondAttribute="bottom" constant="20" id="soc-gU-jXl"/>
                             <constraint firstItem="oSj-nY-Huc" firstAttribute="leading" secondItem="r05-CE-pt8" secondAttribute="leading" id="w4u-Jd-145"/>
                             <constraint firstItem="Zqx-kx-ukL" firstAttribute="top" secondItem="Q31-TH-Lph" secondAttribute="top" constant="25" id="we3-wq-Kfb"/>
                         </constraints>
