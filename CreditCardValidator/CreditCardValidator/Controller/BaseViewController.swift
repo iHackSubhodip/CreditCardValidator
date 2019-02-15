@@ -10,6 +10,8 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    @IBOutlet weak var creditCardView: CreditCardView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

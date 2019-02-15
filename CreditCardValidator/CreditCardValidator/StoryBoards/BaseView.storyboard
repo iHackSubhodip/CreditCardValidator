@@ -28,7 +28,6 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r05-CE-pt8" customClass="CreditCardView" customModule="CreditCardValidator" customModuleProvider="target">
                                 <rect key="frame" x="37.5" y="110" width="300" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="1vE-rz-pMz"/>
                                     <constraint firstAttribute="width" constant="300" id="CVZ-6h-BIJ"/>
@@ -53,6 +52,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q31-TH-Lph"/>
                     </view>
+                    <connections>
+                        <outlet property="creditCardView" destination="r05-CE-pt8" id="YkK-Hu-zrP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJL-gH-Sdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
