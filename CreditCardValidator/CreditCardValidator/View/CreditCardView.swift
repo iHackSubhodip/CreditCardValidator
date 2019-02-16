@@ -46,6 +46,14 @@ class CreditCardView: UIView {
         return cardNumber
     }()
     
+    var cardBrandImageView: UIImageView = {
+        let cardBrandImageView = UIImageView()
+        cardBrandImageView.translatesAutoresizingMaskIntoConstraints = false
+        cardBrandImageView.contentMode = .scaleAspectFit
+        cardBrandImageView.image = UIImage(named: "default")
+        return cardBrandImageView
+    }()
+    
     fileprivate var gradientLayer = CAGradientLayer()
     
     @IBInspectable
@@ -95,6 +103,7 @@ class CreditCardView: UIView {
         creditCardBaseViewSetup()
         creditCardFrontViewSetup()
         creditCardNumberMaskSetup()
+        creditCardBandSetup()
     }
     
     
@@ -154,6 +163,18 @@ extension CreditCardView{
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==30)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
     }
+    
+    private func creditCardBandSetup(){
+        creditCardFrontView.addSubview(cardBrandImageView)
+        NSLayoutConstraint.activate([
+            cardBrandImageView.topAnchor.constraint(equalTo: creditCardFrontView.topAnchor, constant: 10),
+            cardBrandImageView.trailingAnchor.constraint(equalTo: creditCardFrontView.trailingAnchor, constant: -10)
+            ])
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==60)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardBrandImageView]));
+        
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==40)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardBrandImageView]));
+    }
+    
     
 }
 
