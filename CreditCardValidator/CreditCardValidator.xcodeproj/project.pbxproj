@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		904A8BEA2216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE22216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift */; };
+		904A8BEB2216D2ED0099D518 /* AKMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE32216D2ED0099D518 /* AKMaskFieldEvent.swift */; };
+		904A8BEC2216D2ED0099D518 /* AKMaskFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE42216D2ED0099D518 /* AKMaskFieldUtility.swift */; };
+		904A8BED2216D2ED0099D518 /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE52216D2ED0099D518 /* AKMaskField.swift */; };
+		904A8BEE2216D2ED0099D518 /* AKMaskFieldBrackets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE62216D2ED0099D518 /* AKMaskFieldBrackets.swift */; };
+		904A8BEF2216D2ED0099D518 /* AKMaskFieldPatternCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE72216D2ED0099D518 /* AKMaskFieldPatternCharacter.swift */; };
+		904A8BF02216D2ED0099D518 /* AKMaskFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE82216D2ED0099D518 /* AKMaskFieldStatus.swift */; };
+		904A8BF12216D2ED0099D518 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE92216D2ED0099D518 /* AKMaskFieldBlock.swift */; };
 		905F9F5B2215544B0031AAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905F9F5A2215544B0031AAA2 /* AppDelegate.swift */; };
 		905F9F622215544D0031AAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F612215544D0031AAA2 /* Assets.xcassets */; };
 		905F9F652215544D0031AAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F632215544D0031AAA2 /* LaunchScreen.storyboard */; };
@@ -29,6 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		904A8BE22216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockCharacter.swift; sourceTree = "<group>"; };
+		904A8BE32216D2ED0099D518 /* AKMaskFieldEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldEvent.swift; sourceTree = "<group>"; };
+		904A8BE42216D2ED0099D518 /* AKMaskFieldUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldUtility.swift; sourceTree = "<group>"; };
+		904A8BE52216D2ED0099D518 /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
+		904A8BE62216D2ED0099D518 /* AKMaskFieldBrackets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBrackets.swift; sourceTree = "<group>"; };
+		904A8BE72216D2ED0099D518 /* AKMaskFieldPatternCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldPatternCharacter.swift; sourceTree = "<group>"; };
+		904A8BE82216D2ED0099D518 /* AKMaskFieldStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldStatus.swift; sourceTree = "<group>"; };
+		904A8BE92216D2ED0099D518 /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlock.swift; sourceTree = "<group>"; };
 		905F9F572215544B0031AAA2 /* CreditCardValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreditCardValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		905F9F5A2215544B0031AAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		905F9F612215544D0031AAA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CreditCardValidator/Assets/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -62,6 +78,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		904A8BE12216D2BD0099D518 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				904A8BF22216D30B0099D518 /* AKMaskField */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		904A8BF22216D30B0099D518 /* AKMaskField */ = {
+			isa = PBXGroup;
+			children = (
+				904A8BE52216D2ED0099D518 /* AKMaskField.swift */,
+				904A8BE92216D2ED0099D518 /* AKMaskFieldBlock.swift */,
+				904A8BE22216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift */,
+				904A8BE62216D2ED0099D518 /* AKMaskFieldBrackets.swift */,
+				904A8BE32216D2ED0099D518 /* AKMaskFieldEvent.swift */,
+				904A8BE72216D2ED0099D518 /* AKMaskFieldPatternCharacter.swift */,
+				904A8BE82216D2ED0099D518 /* AKMaskFieldStatus.swift */,
+				904A8BE42216D2ED0099D518 /* AKMaskFieldUtility.swift */,
+			);
+			path = AKMaskField;
+			sourceTree = "<group>";
+		};
 		905F9F4E2215544B0031AAA2 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +129,7 @@
 				90B34EC222156C1A0073C23E /* View */,
 				90B34EC522156CB30073C23E /* StoryBoards */,
 				90B34ECE22169EA10073C23E /* Utility */,
+				904A8BE12216D2BD0099D518 /* Helper */,
 				90B34EC822156E910073C23E /* Assets */,
 			);
 			path = CreditCardValidator;
@@ -254,10 +294,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				904A8BEB2216D2ED0099D518 /* AKMaskFieldEvent.swift in Sources */,
+				904A8BF12216D2ED0099D518 /* AKMaskFieldBlock.swift in Sources */,
+				904A8BEE2216D2ED0099D518 /* AKMaskFieldBrackets.swift in Sources */,
 				905F9F5B2215544B0031AAA2 /* AppDelegate.swift in Sources */,
 				90B34ED022169EBB0073C23E /* CreditCardUtility.swift in Sources */,
+				904A8BEC2216D2ED0099D518 /* AKMaskFieldUtility.swift in Sources */,
+				904A8BEA2216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift in Sources */,
+				904A8BED2216D2ED0099D518 /* AKMaskField.swift in Sources */,
 				90B34EC422156C580073C23E /* BaseViewController.swift in Sources */,
 				90B34ECA221575500073C23E /* CreditCardView.swift in Sources */,
+				904A8BEF2216D2ED0099D518 /* AKMaskFieldPatternCharacter.swift in Sources */,
+				904A8BF02216D2ED0099D518 /* AKMaskFieldStatus.swift in Sources */,
 				90B34ECD221690650073C23E /* CreditCardEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
