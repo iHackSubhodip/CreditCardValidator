@@ -107,7 +107,7 @@ class CreditCardView: UIView {
     }
     
     
-    private func setGradientBackground(view: UIView, top: CGColor, bottom: CGColor) {
+    func setGradientBackground(view: UIView, top: CGColor, bottom: CGColor) {
         let colorTop =  top
         let colorBottom = bottom
         gradientLayer.colors = [ colorTop, colorBottom]
@@ -115,66 +115,6 @@ class CreditCardView: UIView {
         gradientLayer.frame = view.bounds
         view.layer.addSublayer(gradientLayer)
     }
-    
-    
-}
-
-
-extension CreditCardView{
-    
-    //MARK:
-    private func creditCardBaseViewSetup() {
-        self.addSubview(creditCardBaseView)
-        NSLayoutConstraint.activate([
-            creditCardBaseView.topAnchor.constraint(equalTo: self.topAnchor),
-            creditCardBaseView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            creditCardBaseView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            creditCardBaseView.heightAnchor.constraint(equalTo: self.heightAnchor)
-            ])
-    }
-    
-    //MARK:
-    private func creditCardFrontViewSetup(){
-        self.addSubview(creditCardFrontView)
-        setGradientBackground(view: creditCardFrontView, top: defaultCardColor.cgColor, bottom: defaultCardColor.cgColor)
-        creditCardFrontView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        NSLayoutConstraint.activate([
-            creditCardFrontView.topAnchor.constraint(equalTo: self.topAnchor),
-            creditCardFrontView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            creditCardFrontView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            creditCardFrontView.heightAnchor.constraint(equalTo: self.heightAnchor)
-            ])
-    }
-    
-    private func creditCardNumberMaskSetup(){
-        cardNumberview.maskDelegate = self
-        cardNumberview.maskExpression = cardNumberMaskExpression
-        cardNumberview.maskTemplate = cardNumberMaskTemplate
-        cardNumberview.textColor = cardHolderExpireDateColor
-        cardNumberview.becomeFirstResponder()
-        creditCardFrontView.addSubview(cardNumberview)
-        
-        NSLayoutConstraint.activate([
-            cardNumberview.centerXAnchor.constraint(equalTo: creditCardFrontView.centerXAnchor),
-            cardNumberview.centerYAnchor.constraint(equalTo: creditCardFrontView.centerYAnchor)
-            ])
-        
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==200)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
-        
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==30)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
-    }
-    
-    private func creditCardBandSetup(){
-        creditCardFrontView.addSubview(cardBrandImageView)
-        NSLayoutConstraint.activate([
-            cardBrandImageView.topAnchor.constraint(equalTo: creditCardFrontView.topAnchor, constant: 10),
-            cardBrandImageView.trailingAnchor.constraint(equalTo: creditCardFrontView.trailingAnchor, constant: -10)
-            ])
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==60)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardBrandImageView]));
-        
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==40)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardBrandImageView]));
-    }
-    
     
 }
 
@@ -187,6 +127,9 @@ extension CreditCardView: AKMaskFieldDelegate{
             return allowedCharacters.isSuperset(of: characterSet)
         }
         return true
+    }
+    
+    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
     }
     
 }

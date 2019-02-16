@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901532BD221830A2000A360C /* CreditCardView+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901532BC221830A2000A360C /* CreditCardView+Setup.swift */; };
+		901532BF22183A3F000A360C /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901532BE22183A3F000A360C /* CreditCardValidator.swift */; };
+		901532C122184123000A360C /* CreditCardValidator+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901532C022184123000A360C /* CreditCardValidator+String.swift */; };
 		904A8BEA2216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE22216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift */; };
 		904A8BEB2216D2ED0099D518 /* AKMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE32216D2ED0099D518 /* AKMaskFieldEvent.swift */; };
 		904A8BEC2216D2ED0099D518 /* AKMaskFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A8BE42216D2ED0099D518 /* AKMaskFieldUtility.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		901532BC221830A2000A360C /* CreditCardView+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditCardView+Setup.swift"; sourceTree = "<group>"; };
+		901532BE22183A3F000A360C /* CreditCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		901532C022184123000A360C /* CreditCardValidator+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditCardValidator+String.swift"; sourceTree = "<group>"; };
 		904A8BE22216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockCharacter.swift; sourceTree = "<group>"; };
 		904A8BE32216D2ED0099D518 /* AKMaskFieldEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldEvent.swift; sourceTree = "<group>"; };
 		904A8BE42216D2ED0099D518 /* AKMaskFieldUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldUtility.swift; sourceTree = "<group>"; };
@@ -82,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				904A8BF22216D30B0099D518 /* AKMaskField */,
+				901532BE22183A3F000A360C /* CreditCardValidator.swift */,
+				901532C022184123000A360C /* CreditCardValidator+String.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				90B34EC9221575500073C23E /* CreditCardView.swift */,
+				901532BC221830A2000A360C /* CreditCardView+Setup.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				901532C122184123000A360C /* CreditCardValidator+String.swift in Sources */,
 				904A8BEB2216D2ED0099D518 /* AKMaskFieldEvent.swift in Sources */,
 				904A8BF12216D2ED0099D518 /* AKMaskFieldBlock.swift in Sources */,
 				904A8BEE2216D2ED0099D518 /* AKMaskFieldBrackets.swift in Sources */,
@@ -301,6 +311,8 @@
 				90B34ED022169EBB0073C23E /* CreditCardUtility.swift in Sources */,
 				904A8BEC2216D2ED0099D518 /* AKMaskFieldUtility.swift in Sources */,
 				904A8BEA2216D2ED0099D518 /* AKMaskFieldBlockCharacter.swift in Sources */,
+				901532BD221830A2000A360C /* CreditCardView+Setup.swift in Sources */,
+				901532BF22183A3F000A360C /* CreditCardValidator.swift in Sources */,
 				904A8BED2216D2ED0099D518 /* AKMaskField.swift in Sources */,
 				90B34EC422156C580073C23E /* BaseViewController.swift in Sources */,
 				90B34ECA221575500073C23E /* CreditCardView.swift in Sources */,
