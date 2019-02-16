@@ -55,6 +55,8 @@ class CreditCardView: UIView {
     }()
     
     fileprivate var gradientLayer = CAGradientLayer()
+    public var colors = [String : [UIColor]]()
+    var amexCard = false
     
     @IBInspectable
     public var defaultCardColor: UIColor = UIColor.hexStr(hexStr: "363434", alpha: 1) {
@@ -100,6 +102,9 @@ class CreditCardView: UIView {
     
     
     func createCreditCardViews(){
+        if colors.count < 6 {
+            setCreditCradBrandColors()
+        }
         creditCardBaseViewSetup()
         creditCardFrontViewSetup()
         creditCardNumberMaskSetup()
@@ -116,6 +121,65 @@ class CreditCardView: UIView {
         view.layer.addSublayer(gradientLayer)
     }
     
+    func setType(colors: [UIColor], alpha: CGFloat, back: UIColor) {
+        UIView.animate(withDuration: 2, animations: { () -> Void in
+            self.gradientLayer.colors = [colors[0].cgColor, colors[1].cgColor]
+        })
+    }
+    
+    public func paymentCardTextFieldDidChange(cardNumber: String? = "") {
+        self.cardNumberview.text = cardNumber
+        
+        guard let cardN = cardNumber else {
+            return
+        }
+        
+        if (cardN.count == 0)
+        {
+            self.cardNumberview.maskExpression = "{....} {....} {....} {....}"
+        }
+        
+        let validator = CreditCardValidator()
+        if (cardN.count >= 7 || cardN.count < 4) {
+            
+            guard let type = validator.type(from: "\(cardN as String?)") else {
+                self.cardBrandImageView.image = nil
+                if let name = colors["NONE"] {
+                    setType(colors: [name[0], name[1]], alpha: 0.5, back: name[0])
+                }
+                return
+            }
+            
+            // Visa, Mastercard, Amex etc.
+            if let name = colors[type.name] {
+                if(type.name.lowercased() == "amex".lowercased()){
+                    if !amexCard {
+                        self.cardNumberview.maskExpression = "{....} {....} {....} {...}"
+                        amexCard = true
+                    }
+                }else {
+                    amexCard = false
+                }
+                self.cardBrandImageView.image = UIImage(named: type.name)
+                setType(colors: [name[0], name[1]], alpha: 1, back: name[0])
+            }else{
+                setType(colors: [self.colors["DEFAULT"]![0], self.colors["DEFAULT"]![0]], alpha: 1, back: self.colors["DEFAULT"]![0])
+            }
+        }
+    }
+    
+}
+
+extension CreditCardView{
+    func setCreditCradBrandColors() {
+        colors[CreditCardBrands.NONE.rawValue] = [defaultCardColor, defaultCardColor]
+        colors[CreditCardBrands.Visa.rawValue] = [UIColor.hexStr(hexStr: "#5D8BF2", alpha: 1), UIColor.hexStr(hexStr: "#3545AE", alpha: 1)]
+        colors[CreditCardBrands.MasterCard.rawValue] = [UIColor.hexStr(hexStr: "#ED495A", alpha: 1), UIColor.hexStr(hexStr: "#8B1A2B", alpha: 1)]
+        colors[CreditCardBrands.Amex.rawValue] = [UIColor.hexStr(hexStr: "#005B9D", alpha: 1), UIColor.hexStr(hexStr: "#132972", alpha: 1)]
+        colors["Diners Club"] = [UIColor.hexStr(hexStr: "#5b99d8", alpha: 1), UIColor.hexStr(hexStr: "#4186CD", alpha: 1)]
+        colors[CreditCardBrands.Discover.rawValue] = [UIColor.hexStr(hexStr: "#e8a258", alpha: 1), UIColor.hexStr(hexStr: "#D97B16", alpha: 1)]
+        colors[CreditCardBrands.DEFAULT.rawValue] = [UIColor.hexStr(hexStr: "#5D8BF2", alpha: 1), UIColor.hexStr(hexStr: "#3545AE", alpha: 1)]
+    }
 }
 
 extension CreditCardView: AKMaskFieldDelegate{
@@ -130,6 +194,18 @@ extension CreditCardView: AKMaskFieldDelegate{
     }
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
+        paymentCardTextFieldDidChange(cardNumber: maskField.text)
     }
     
+    func maskFieldDidEndEditing(_ maskField: AKMaskField) {
+        print("end")
+    }
+    
+    func maskFieldShouldEndEditing(_ maskField: AKMaskField) -> Bool {
+        print("aaa")
+        return true
+    }
+    
+    
 }
+

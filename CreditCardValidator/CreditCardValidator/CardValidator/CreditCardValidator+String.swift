@@ -9,30 +9,28 @@
 import Foundation
 import UIKit
 
-extension String {
+public func ==(lhs: CreditCardValidationType, rhs: CreditCardValidationType) -> Bool {
+    return lhs.name == rhs.name
+}
+
+public struct CreditCardValidationType: Equatable {
     
-    public func isValidCardNumber() -> Bool {
-        do {
-            try CreditCardValidator.performLuhnAlgorithm(with: self)
-            return true
+    public var name: String
+    
+    public var regex: String
+    
+    public init(dict: [String: Any]) {
+        if let name = dict["name"] as? String {
+            self.name = name
+        } else {
+            self.name = ""
         }
-        catch {
-            return false
+        
+        if let regex = dict["regex"] as? String {
+            self.regex = regex
+        } else {
+            self.regex = ""
         }
     }
     
-    func cardType() -> CreditCardBrands? {
-        let cardType = try? CreditCardValidator.cardType(for: self)
-        return cardType
-    }
-    
-    func suggestedCardType() -> CreditCardBrands? {
-        let cardType = try? CreditCardValidator.cardType(for: self, suggest: true)
-        return cardType
-    }
-    
-    public func formattedCardNumber() -> String {
-        let numbersOnlyEquivalent = replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression, range: nil)
-        return numbersOnlyEquivalent.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-    }
 }
