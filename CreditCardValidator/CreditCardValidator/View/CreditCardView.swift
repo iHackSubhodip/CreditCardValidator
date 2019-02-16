@@ -20,7 +20,7 @@ class CreditCardView: UIView {
     let creditCardBaseView: CreditCardBaseView = {
         let baseView = CreditCardBaseView()
         baseView.frame = .zero
-        baseView.layer.cornerRadius = 6
+        baseView.layer.cornerRadius = 8
         baseView.clipsToBounds = true
         baseView.translatesAutoresizingMaskIntoConstraints = false
         return baseView
@@ -28,8 +28,9 @@ class CreditCardView: UIView {
     
     let creditCardFrontView: CreditCardFrontView = {
         let creditCardFrontView = CreditCardFrontView()
-        creditCardFrontView.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
-        creditCardFrontView.layer.cornerRadius = 6
+        creditCardFrontView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        creditCardFrontView.layer.cornerRadius = 8
+        creditCardFrontView.isUserInteractionEnabled = false
         creditCardFrontView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
         creditCardFrontView.layer.cornerRadius = 6
         creditCardFrontView.clipsToBounds = true
@@ -106,6 +107,7 @@ class CreditCardView: UIView {
         view.layer.addSublayer(gradientLayer)
     }
     
+    
 }
 
 
@@ -140,6 +142,7 @@ extension CreditCardView{
         cardNumberview.maskExpression = cardNumberMaskExpression
         cardNumberview.maskTemplate = cardNumberMaskTemplate
         cardNumberview.textColor = cardHolderExpireDateColor
+        cardNumberview.becomeFirstResponder()
         creditCardFrontView.addSubview(cardNumberview)
         
         NSLayoutConstraint.activate([
