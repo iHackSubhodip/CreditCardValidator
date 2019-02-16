@@ -88,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				904A8BF22216D30B0099D518 /* AKMaskField */,
-				901532BE22183A3F000A360C /* CreditCardValidator.swift */,
-				901532C022184123000A360C /* CreditCardValidator+String.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -136,6 +134,7 @@
 				90B34EC122156C0B0073C23E /* Controller */,
 				90B34EC222156C1A0073C23E /* View */,
 				90B34EC522156CB30073C23E /* StoryBoards */,
+				909AEE9B2218442E00873669 /* CardValidator */,
 				90B34ECE22169EA10073C23E /* Utility */,
 				904A8BE12216D2BD0099D518 /* Helper */,
 				90B34EC822156E910073C23E /* Assets */,
@@ -150,6 +149,15 @@
 				905F9F712215544D0031AAA2 /* Info.plist */,
 			);
 			path = CreditCardValidatorTests;
+			sourceTree = "<group>";
+		};
+		909AEE9B2218442E00873669 /* CardValidator */ = {
+			isa = PBXGroup;
+			children = (
+				901532BE22183A3F000A360C /* CreditCardValidator.swift */,
+				901532C022184123000A360C /* CreditCardValidator+String.swift */,
+			);
+			path = CardValidator;
 			sourceTree = "<group>";
 		};
 		90B34EC122156C0B0073C23E /* Controller */ = {
