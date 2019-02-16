@@ -37,12 +37,41 @@ class CreditCardView: UIView {
         return creditCardFrontView
     }()
     
+    var cardNumberview: AKMaskField = {
+        let cardNumber = AKMaskField()
+        cardNumber.translatesAutoresizingMaskIntoConstraints = false
+        cardNumber.font = UIFont(name: "Menlo Bold", size: 17.0)
+        cardNumber.frame = .zero
+        return cardNumber
+    }()
+    
     fileprivate var gradientLayer = CAGradientLayer()
     
     @IBInspectable
     public var defaultCardColor: UIColor = UIColor.hexStr(hexStr: "363434", alpha: 1) {
         didSet {
             gradientLayer.colors = [defaultCardColor.cgColor, defaultCardColor.cgColor]
+        }
+    }
+    
+    @IBInspectable
+    public var cardNumberMaskExpression = "{....} {....} {....} {....}" {
+        didSet {
+            cardNumberview.maskExpression = cardNumberMaskExpression
+        }
+    }
+    
+    @IBInspectable
+    public var cardNumberMaskTemplate = "XXXX XXXX XXXX XXXX" {
+        didSet {
+            cardNumberview.maskTemplate = cardNumberMaskTemplate
+        }
+    }
+    
+    @IBInspectable
+    public var cardHolderExpireDateColor: UIColor = .white {
+        didSet {
+            cardNumberview.textColor = cardHolderExpireDateColor
         }
     }
     
@@ -64,6 +93,7 @@ class CreditCardView: UIView {
     func createCreditCardViews(){
         creditCardBaseViewSetup()
         creditCardFrontViewSetup()
+        creditCardNumberMaskSetup()
     }
     
     
@@ -103,6 +133,36 @@ extension CreditCardView{
             creditCardFrontView.widthAnchor.constraint(equalTo: self.widthAnchor),
             creditCardFrontView.heightAnchor.constraint(equalTo: self.heightAnchor)
             ])
+    }
+    
+    private func creditCardNumberMaskSetup(){
+        cardNumberview.maskDelegate = self
+        cardNumberview.maskExpression = cardNumberMaskExpression
+        cardNumberview.maskTemplate = cardNumberMaskTemplate
+        cardNumberview.textColor = cardHolderExpireDateColor
+        creditCardFrontView.addSubview(cardNumberview)
+        
+        NSLayoutConstraint.activate([
+            cardNumberview.centerXAnchor.constraint(equalTo: creditCardFrontView.centerXAnchor),
+            cardNumberview.centerYAnchor.constraint(equalTo: creditCardFrontView.centerYAnchor)
+            ])
+        
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==200)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
+        
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==30)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
+    }
+    
+}
+
+extension CreditCardView: AKMaskFieldDelegate{
+    
+    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
+        if maskField == cardNumberview {
+            let allowedCharacters = CharacterSet(charactersIn:"0123456789")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
     }
     
 }
