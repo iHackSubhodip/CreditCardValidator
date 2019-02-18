@@ -49,7 +49,7 @@ extension CreditCardView{
             cardNumberview.centerYAnchor.constraint(equalTo: creditCardFrontView.centerYAnchor)
             ])
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==200)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==220)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==30)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
     }
@@ -65,6 +65,16 @@ extension CreditCardView{
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==60)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardBrandImageView]));
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==40)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardBrandImageView]));
+    }
+    
+    func creditCardConfirmButtonSetup(){
+        creditCardFrontView.addSubview(creditCardProceedButton)
+        NSLayoutConstraint.activate([
+            creditCardProceedButton.widthAnchor.constraint(equalToConstant: 80),
+            creditCardProceedButton.heightAnchor.constraint(equalToConstant: 40),
+            creditCardProceedButton.leadingAnchor.constraint(equalTo: cardNumberview.leadingAnchor),
+            creditCardProceedButton.bottomAnchor.constraint(equalTo: creditCardFrontView.bottomAnchor, constant: -20)
+            ])
     }
     
     

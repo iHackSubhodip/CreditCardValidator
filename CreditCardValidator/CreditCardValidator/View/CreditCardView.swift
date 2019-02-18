@@ -29,10 +29,9 @@ class CreditCardView: UIView {
     let creditCardFrontView: CreditCardFrontView = {
         let creditCardFrontView = CreditCardFrontView()
         creditCardFrontView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
-        creditCardFrontView.layer.cornerRadius = 8
         creditCardFrontView.isUserInteractionEnabled = false
         creditCardFrontView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
-        creditCardFrontView.layer.cornerRadius = 6
+        creditCardFrontView.layer.cornerRadius = 8
         creditCardFrontView.clipsToBounds = true
         creditCardFrontView.translatesAutoresizingMaskIntoConstraints = false
         return creditCardFrontView
@@ -52,6 +51,18 @@ class CreditCardView: UIView {
         cardBrandImageView.contentMode = .scaleAspectFit
         cardBrandImageView.image = UIImage(named: "default")
         return cardBrandImageView
+    }()
+    
+    var creditCardProceedButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.setTitle("Proceed", for: .normal)
+        button.setTitleColor(UIColor.hexStr(hexStr: "#3545AE", alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: "Menlo Bold", size: 10.0)
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        return button
     }()
     
     fileprivate var gradientLayer = CAGradientLayer()
@@ -109,6 +120,7 @@ class CreditCardView: UIView {
         creditCardFrontViewSetup()
         creditCardNumberMaskSetup()
         creditCardBandSetup()
+        creditCardConfirmButtonSetup()
     }
     
     
@@ -195,17 +207,7 @@ extension CreditCardView: AKMaskFieldDelegate{
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
         paymentCardTextFieldDidChange(cardNumber: maskField.text)
-    }
-    
-    func maskFieldDidEndEditing(_ maskField: AKMaskField) {
-        print("end")
-    }
-    
-    func maskFieldShouldEndEditing(_ maskField: AKMaskField) -> Bool {
-        print("aaa")
-        return true
-    }
-    
+    }    
     
 }
 
