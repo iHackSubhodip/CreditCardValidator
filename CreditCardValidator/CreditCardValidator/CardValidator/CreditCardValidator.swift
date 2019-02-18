@@ -34,7 +34,7 @@ class CreditCardValidator{
     }
 
     
-    public func validate(string: String) -> Bool {
+    func validate(string: String) -> Bool {
         let numbers = self.onlyNumbers(string: string)
         if numbers.count < 9 {
             return false
@@ -71,11 +71,11 @@ class CreditCardValidator{
      
      - returns: true or false
      */
-    public func validate(string: String, forType type: CreditCardValidationType) -> Bool {
+    func validate(string: String, forType type: CreditCardValidationType) -> Bool {
         return self.type(from: string) == type
     }
     
-    public func onlyNumbers(string: String) -> String {
+    func onlyNumbers(string: String) -> String {
         let set = CharacterSet.decimalDigits.inverted
         let numbers = string.components(separatedBy: set)
         return numbers.joined(separator: "")
@@ -100,14 +100,8 @@ class CreditCardValidator{
             "name": "Diners Club",
             "regex": "^3(?:0[0-5]|[68][0-9])[0-9]{4,}$"
         ], [
-            "name": "JCB",
-            "regex": "^(?:2131|1800|35[0-9]{3})[0-9]{3,}$"
-        ], [
             "name": "Discover",
             "regex": "^6(?:011|5[0-9]{2})[0-9]{3,}$"
-        ], [
-            "name": "UnionPay",
-            "regex": "^62[0-5]\\d{13,16}$"
         ]
     ]
     
