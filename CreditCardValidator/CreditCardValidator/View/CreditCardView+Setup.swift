@@ -70,14 +70,22 @@ extension CreditCardView{
     func creditCardConfirmButtonSetup(){
         creditCardFrontView.addSubview(creditCardProceedButton)
         NSLayoutConstraint.activate([
-            creditCardProceedButton.widthAnchor.constraint(equalToConstant: 80),
+            creditCardProceedButton.widthAnchor.constraint(equalToConstant: 100),
             creditCardProceedButton.heightAnchor.constraint(equalToConstant: 40),
             creditCardProceedButton.leadingAnchor.constraint(equalTo: cardNumberview.leadingAnchor),
             creditCardProceedButton.bottomAnchor.constraint(equalTo: creditCardFrontView.bottomAnchor, constant: -20)
             ])
     }
     
-    
+    func creditCardInvalidLabelSetup(){
+        creditCardFrontView.addSubview(creditCardInvalidLabel)
+        NSLayoutConstraint.activate([
+            creditCardInvalidLabel.widthAnchor.constraint(equalToConstant: 200),
+            creditCardInvalidLabel.heightAnchor.constraint(equalToConstant: 40),
+            creditCardInvalidLabel.leadingAnchor.constraint(equalTo: cardNumberview.leadingAnchor),
+            creditCardInvalidLabel.bottomAnchor.constraint(equalTo: creditCardFrontView.bottomAnchor, constant: -30)
+            ])
+    }
 }
 
 
