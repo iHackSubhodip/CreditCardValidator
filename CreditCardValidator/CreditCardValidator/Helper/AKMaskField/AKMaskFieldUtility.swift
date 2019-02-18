@@ -1,12 +1,3 @@
-//
-//  AKMaskFieldUtility.swift
-//  AKMaskField
-//  GitHub: https://github.com/artemkrachulov/AKMaskField
-//
-//  Created by Artem Krachulov
-//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
-//  Website: http://www.artemkrachulov.com/
-//
 
 import UIKit
 
@@ -23,16 +14,6 @@ public class AKMaskFieldUtility {
             let to = String.Index(to16, within: string)
             else { return nil }
         return from ..< to
-        /*
-         
-         let from16 = string.utf16.startIndex.advancedBy(nsRange.location, limit: string.utf16.endIndex)
-         let to16 = from16.advancedBy(nsRange.length, limit: string.utf16.endIndex)
-         
-         if let from = String.Index(from16, within: string),
-         let to = String.Index(to16, within: string) {
-         return from ..< to
-         }
-         return nil*/
     }
     
     public class func substring(_ sourceString: String?, withNSRange range: NSRange) -> String {

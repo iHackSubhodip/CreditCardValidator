@@ -74,9 +74,10 @@ class CreditCardView: UIView {
         return label
     }()
     
-    fileprivate var gradientLayer = CAGradientLayer()
-    public var colors = [String : [UIColor]]()
+    var gradientLayer = CAGradientLayer()
+    var colors = [String : [UIColor]]()
     var amexCard = false
+    
     
     @IBInspectable
     public var defaultCardColor: UIColor = UIColor.hexStr(hexStr: "363434", alpha: 1) {
@@ -136,21 +137,7 @@ class CreditCardView: UIView {
         creditCardInvalidLabelSetup()
     }
     
-    
-    func setGradientBackground(view: UIView, top: CGColor, bottom: CGColor) {
-        let colorTop =  top
-        let colorBottom = bottom
-        gradientLayer.colors = [ colorTop, colorBottom]
-        gradientLayer.locations = [ 0.0, 1.0]
-        gradientLayer.frame = view.bounds
-        view.layer.addSublayer(gradientLayer)
-    }
-    
-    func setType(colors: [UIColor], alpha: CGFloat, back: UIColor) {
-        UIView.animate(withDuration: 2, animations: { () -> Void in
-            self.gradientLayer.colors = [colors[0].cgColor, colors[1].cgColor]
-        })
-    }
+
     
     public func paymentCardTextFieldDidChange(cardNumber: String? = "") {
         
@@ -177,7 +164,7 @@ class CreditCardView: UIView {
                 }else{
                     creditCardInvalidLabel.isHidden = false
                     self.cardBrandImageView.image = nil
-                    setType(colors: [defaultCardColor, defaultCardColor], alpha: 0.5, back: defaultCardColor)
+                    setType(colors: [defaultCardColor, defaultCardColor], alpha: 0.5)
                     return
                 }
             }
@@ -185,7 +172,7 @@ class CreditCardView: UIView {
             guard let type = validator.type(from: "\(cardN as String?)") else {
                 self.cardBrandImageView.image = nil
                 if let name = colors["NONE"] {
-                    setType(colors: [name[0], name[1]], alpha: 0.5, back: name[0])
+                    setType(colors: [name[0], name[1]], alpha: 0.5)
                 }
                 return
             }
@@ -200,9 +187,9 @@ class CreditCardView: UIView {
                     amexCard = false
                 }
                 self.cardBrandImageView.image = UIImage(named: type.name)
-                setType(colors: [name[0], name[1]], alpha: 1, back: name[0])
+                setType(colors: [name[0], name[1]], alpha: 1)
             }else{
-                setType(colors: [self.colors["DEFAULT"]![0], self.colors["DEFAULT"]![0]], alpha: 1, back: self.colors["DEFAULT"]![0])
+                setType(colors: [self.colors["DEFAULT"]![0], self.colors["DEFAULT"]![0]], alpha: 1)
             }
             
             
@@ -211,32 +198,6 @@ class CreditCardView: UIView {
     
 }
 
-extension CreditCardView{
-    func setCreditCradBrandColors() {
-        colors[CreditCardBrands.NONE.rawValue] = [defaultCardColor, defaultCardColor]
-        colors[CreditCardBrands.Visa.rawValue] = [UIColor.hexStr(hexStr: "#5D8BF2", alpha: 1), UIColor.hexStr(hexStr: "#3545AE", alpha: 1)]
-        colors[CreditCardBrands.Mastercard.rawValue] = [UIColor.hexStr(hexStr: "#ED495A", alpha: 1), UIColor.hexStr(hexStr: "#8B1A2B", alpha: 1)]
-        colors[CreditCardBrands.Amex.rawValue] = [UIColor.hexStr(hexStr: "#005B9D", alpha: 1), UIColor.hexStr(hexStr: "#132972", alpha: 1)]
-        colors["Diners Club"] = [UIColor.hexStr(hexStr: "#5b99d8", alpha: 1), UIColor.hexStr(hexStr: "#4186CD", alpha: 1)]
-        colors[CreditCardBrands.Discover.rawValue] = [UIColor.hexStr(hexStr: "#e8a258", alpha: 1), UIColor.hexStr(hexStr: "#D97B16", alpha: 1)]
-        colors[CreditCardBrands.DEFAULT.rawValue] = [UIColor.hexStr(hexStr: "#5D8BF2", alpha: 1), UIColor.hexStr(hexStr: "#3545AE", alpha: 1)]
-    }
-}
 
-extension CreditCardView: AKMaskFieldDelegate{
-    
-    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
-        if maskField == cardNumberview {
-            let allowedCharacters = CharacterSet(charactersIn:"0123456789")
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
-        }
-        return true
-    }
-    
-    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
-        paymentCardTextFieldDidChange(cardNumber: maskField.text)
-    }
-    
-}
+
 

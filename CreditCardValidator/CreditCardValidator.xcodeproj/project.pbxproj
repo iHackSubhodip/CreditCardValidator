@@ -22,6 +22,8 @@
 		905F9F622215544D0031AAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F612215544D0031AAA2 /* Assets.xcassets */; };
 		905F9F652215544D0031AAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905F9F632215544D0031AAA2 /* LaunchScreen.storyboard */; };
 		905F9F702215544D0031AAA2 /* CreditCardValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905F9F6F2215544D0031AAA2 /* CreditCardValidatorTests.swift */; };
+		909AEE9D221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AEE9C221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift */; };
+		909AEE9F221ACF4200873669 /* CreditCardView+ColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AEE9E221ACF4200873669 /* CreditCardView+ColorGradient.swift */; };
 		90B34EC422156C580073C23E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B34EC322156C580073C23E /* BaseViewController.swift */; };
 		90B34EC722156D020073C23E /* BaseView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B34EC622156D020073C23E /* BaseView.storyboard */; };
 		90B34ECA221575500073C23E /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B34EC9221575500073C23E /* CreditCardView.swift */; };
@@ -59,6 +61,8 @@
 		905F9F6B2215544D0031AAA2 /* CreditCardValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreditCardValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		905F9F6F2215544D0031AAA2 /* CreditCardValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidatorTests.swift; sourceTree = "<group>"; };
 		905F9F712215544D0031AAA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		909AEE9C221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditCardView+TextFieldDelegate.swift"; sourceTree = "<group>"; };
+		909AEE9E221ACF4200873669 /* CreditCardView+ColorGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditCardView+ColorGradient.swift"; sourceTree = "<group>"; };
 		90B34EC322156C580073C23E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		90B34EC622156D020073C23E /* BaseView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = BaseView.storyboard; path = CreditCardValidator/StoryBoards/BaseView.storyboard; sourceTree = SOURCE_ROOT; };
 		90B34EC9221575500073C23E /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			children = (
 				90B34EC9221575500073C23E /* CreditCardView.swift */,
 				901532BC221830A2000A360C /* CreditCardView+Setup.swift */,
+				909AEE9C221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift */,
+				909AEE9E221ACF4200873669 /* CreditCardView+ColorGradient.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				901532C122184123000A360C /* CreditCardValidator+String.swift in Sources */,
+				909AEE9F221ACF4200873669 /* CreditCardView+ColorGradient.swift in Sources */,
 				904A8BEB2216D2ED0099D518 /* AKMaskFieldEvent.swift in Sources */,
 				904A8BF12216D2ED0099D518 /* AKMaskFieldBlock.swift in Sources */,
 				904A8BEE2216D2ED0099D518 /* AKMaskFieldBrackets.swift in Sources */,
@@ -322,6 +329,7 @@
 				901532BD221830A2000A360C /* CreditCardView+Setup.swift in Sources */,
 				901532BF22183A3F000A360C /* CreditCardValidator.swift in Sources */,
 				904A8BED2216D2ED0099D518 /* AKMaskField.swift in Sources */,
+				909AEE9D221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift in Sources */,
 				90B34EC422156C580073C23E /* BaseViewController.swift in Sources */,
 				90B34ECA221575500073C23E /* CreditCardView.swift in Sources */,
 				904A8BEF2216D2ED0099D518 /* AKMaskFieldPatternCharacter.swift in Sources */,
