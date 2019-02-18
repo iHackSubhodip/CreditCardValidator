@@ -91,7 +91,7 @@ class CreditCardValidator{
             "name": "Visa",
             "regex": "^4[0-9]{6,}$"
         ], [
-            "name": "MasterCard",
+            "name": "Mastercard",
             "regex": "^5[1-5][0-9]{5,}$"
         ], [
             "name": "Maestro",

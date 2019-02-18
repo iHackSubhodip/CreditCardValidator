@@ -65,6 +65,8 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
      
      */
     
+    var isVisited = false
+    
     @IBInspectable open var maskExpression: String? {
         didSet {
             
@@ -413,7 +415,13 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         
         if guardMask { return false }
         
+        if isVisited {
+            isVisited = false
+            return false
+        }
+        
         let maskBlocksChars = maskBlocks.flatMap { $0.chars }
+        
         
         // EVENTS
         
@@ -631,12 +639,11 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         }
         
         // DISPLAYED TEXT
-        
-        if maskStatus == .clear || maskStatus == .incomplete{
-            refreshMask()
+        refreshMask()
+        if maskStatus == .complete{
+            isVisited = true
         }else{
-            super.text = maskText
-            return false
+            isVisited = false
         }
 
         if jumpToPrevBlock {
@@ -672,8 +679,6 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         if let event = event {
             maskDelegate?.maskField(self, didChangedWithEvent: event)
         }
-        
-
         
         return false
     }

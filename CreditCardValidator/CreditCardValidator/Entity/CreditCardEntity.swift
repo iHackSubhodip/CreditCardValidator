@@ -10,7 +10,7 @@ import Foundation
 
 
 enum CreditCardBrands : String {
-    case NONE, Visa, MasterCard, Amex, DEFAULT, Discover
+    case NONE, Visa, Mastercard, Amex, DEFAULT, Discover
 }
 
 enum CardError: Error {

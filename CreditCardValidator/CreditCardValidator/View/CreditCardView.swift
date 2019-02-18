@@ -120,6 +120,7 @@ class CreditCardView: UIView {
         creditCardFrontViewSetup()
         creditCardNumberMaskSetup()
         creditCardBandSetup()
+        creditCardProceedButton.isHidden = true
         creditCardConfirmButtonSetup()
     }
     
@@ -140,8 +141,9 @@ class CreditCardView: UIView {
     }
     
     public func paymentCardTextFieldDidChange(cardNumber: String? = "") {
-        self.cardNumberview.text = cardNumber
         
+        self.cardNumberview.text = cardNumber
+        creditCardProceedButton.isHidden = true
         guard let cardN = cardNumber else {
             return
         }
@@ -154,6 +156,12 @@ class CreditCardView: UIView {
         let validator = CreditCardValidator()
         if (cardN.count >= 7 || cardN.count < 4) {
             
+            if cardNumberview.maskStatus == .complete{
+                let isCardValid = validator.validate(string: "\(cardN as String?)")
+                if isCardValid{
+                    creditCardProceedButton.isHidden = false
+                }
+            }
             guard let type = validator.type(from: "\(cardN as String?)") else {
                 self.cardBrandImageView.image = nil
                 if let name = colors["NONE"] {
@@ -177,6 +185,8 @@ class CreditCardView: UIView {
             }else{
                 setType(colors: [self.colors["DEFAULT"]![0], self.colors["DEFAULT"]![0]], alpha: 1, back: self.colors["DEFAULT"]![0])
             }
+            
+            
         }
     }
     
@@ -186,7 +196,7 @@ extension CreditCardView{
     func setCreditCradBrandColors() {
         colors[CreditCardBrands.NONE.rawValue] = [defaultCardColor, defaultCardColor]
         colors[CreditCardBrands.Visa.rawValue] = [UIColor.hexStr(hexStr: "#5D8BF2", alpha: 1), UIColor.hexStr(hexStr: "#3545AE", alpha: 1)]
-        colors[CreditCardBrands.MasterCard.rawValue] = [UIColor.hexStr(hexStr: "#ED495A", alpha: 1), UIColor.hexStr(hexStr: "#8B1A2B", alpha: 1)]
+        colors[CreditCardBrands.Mastercard.rawValue] = [UIColor.hexStr(hexStr: "#ED495A", alpha: 1), UIColor.hexStr(hexStr: "#8B1A2B", alpha: 1)]
         colors[CreditCardBrands.Amex.rawValue] = [UIColor.hexStr(hexStr: "#005B9D", alpha: 1), UIColor.hexStr(hexStr: "#132972", alpha: 1)]
         colors["Diners Club"] = [UIColor.hexStr(hexStr: "#5b99d8", alpha: 1), UIColor.hexStr(hexStr: "#4186CD", alpha: 1)]
         colors[CreditCardBrands.Discover.rawValue] = [UIColor.hexStr(hexStr: "#e8a258", alpha: 1), UIColor.hexStr(hexStr: "#D97B16", alpha: 1)]
@@ -207,7 +217,7 @@ extension CreditCardView: AKMaskFieldDelegate{
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
         paymentCardTextFieldDidChange(cardNumber: maskField.text)
-    }    
+    }
     
 }
 
