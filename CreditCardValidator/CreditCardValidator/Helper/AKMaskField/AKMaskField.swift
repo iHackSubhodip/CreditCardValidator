@@ -378,7 +378,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         switch maskStatus {
         case .clear       : position = maskBlocks.first!.templateRange.location
         case .incomplete  : position = maskBlocks.flatMap { $0.chars.filter { $0.status == .clear } }.first!.templateRange.location
-        case .complete    : position = maskBlocks.last!.templateRange.toRange()!.upperBound
+        case .complete    : position = maskBlocks.last!.templateRange.upperBound
         }
         
         AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
@@ -587,7 +587,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         
                         
                         // New carret position
-                        location = maskTextRange.toRange()!.upperBound
+                        location = maskTextRange.upperBound
                         
                         event = .insert
                         
@@ -632,7 +632,12 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         
         // DISPLAYED TEXT
         
-        refreshMask()
+        if maskStatus == .clear || maskStatus == .incomplete{
+            refreshMask()
+        }else{
+            super.text = maskText
+            return false
+        }
 
         if jumpToPrevBlock {
             for (i, maskBlock) in maskBlocks.enumerated().reversed() {
