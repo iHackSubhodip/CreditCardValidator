@@ -164,6 +164,33 @@
 			path = CardValidator;
 			sourceTree = "<group>";
 		};
+		909AEEA0221BDB2A00873669 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				909AEEA2221BDB6500873669 /* CardTextView */,
+				909AEEA1221BDB3F00873669 /* CardView */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		909AEEA1221BDB3F00873669 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				90B34EC9221575500073C23E /* CreditCardView.swift */,
+				901532BC221830A2000A360C /* CreditCardView+Setup.swift */,
+				909AEE9C221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift */,
+				909AEE9E221ACF4200873669 /* CreditCardView+ColorGradient.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		909AEEA2221BDB6500873669 /* CardTextView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CardTextView;
+			sourceTree = "<group>";
+		};
 		90B34EC122156C0B0073C23E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,10 +202,7 @@
 		90B34EC222156C1A0073C23E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				90B34EC9221575500073C23E /* CreditCardView.swift */,
-				901532BC221830A2000A360C /* CreditCardView+Setup.swift */,
-				909AEE9C221ACEC000873669 /* CreditCardView+TextFieldDelegate.swift */,
-				909AEE9E221ACF4200873669 /* CreditCardView+ColorGradient.swift */,
+				909AEEA0221BDB2A00873669 /* CustomViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
