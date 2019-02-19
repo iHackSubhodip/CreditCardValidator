@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-public func ==(lhs: CreditCardValidationType, rhs: CreditCardValidationType) -> Bool {
+func ==(lhs: CreditCardValidationType, rhs: CreditCardValidationType) -> Bool {
     return lhs.name == rhs.name
 }
 
-public struct CreditCardValidationType: Equatable {
+ struct CreditCardValidationType: Equatable {
     
-    public var name: String
+     var name: String
     
-    public var regex: String
+     var regex: String
     
-    public init(dict: [String: Any]) {
+     init(dict: [String: Any]) {
         if let name = dict["name"] as? String {
             self.name = name
         } else {

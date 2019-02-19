@@ -1,21 +1,24 @@
+//
+//  CreditCardTextFieldBlock.swift
+//  CreditCardValidator
+//
+//  Created by Banerjee,Subhodip on 19/02/19.
+//  Copyright © 2019 Banerjee,Subhodip. All rights reserved.
+//
 
 import Foundation
 
-/// A structure that contains the mask block main properties.
-
-public struct AKMaskFieldBlock {
-    
-    //  MARK: - General
+ struct CreditCardTextFieldBlock {
     
     /// Block index in the mask
     
-    public var index: Int
+     var index: Int
     
     /// Returns the current block status.
     
-    public var status: AKMaskFieldStatus {
+     var status: CreditCardTextFieldStatus {
         
-        let completedChars: [AKMaskFieldBlockCharacter] = chars.filter { return $0.status != .clear }
+        let completedChars: [CreditCardTextFieldBlockCharacter] = chars.filter { return $0.status != .clear }
         
         switch completedChars.count {
         case 0           : return .clear
@@ -26,13 +29,13 @@ public struct AKMaskFieldBlock {
     
     /// An array containing all characters inside block.
     
-    public var chars: [AKMaskFieldBlockCharacter]
+     var chars: [CreditCardTextFieldBlockCharacter]
     
     //  MARK: - Pattern
     
     /// The mask pattern that represent current block.
     
-    public var pattern: String {
+     var pattern: String {
         
         var pattern: String = ""
         for char in chars {
@@ -43,7 +46,7 @@ public struct AKMaskFieldBlock {
     
     /// Location of the mask pattern in the mask.
     
-    public var patternRange: NSRange {
+     var patternRange: NSRange {
         return NSMakeRange(chars.first!.patternRange.location, chars.count)
     }
     
@@ -51,7 +54,7 @@ public struct AKMaskFieldBlock {
     
     /// The mask template string that represent current block.
     
-    public var template: String {
+     var template: String {
         var template: String = ""
         for char in chars {
             template.append(char.template)
@@ -61,7 +64,7 @@ public struct AKMaskFieldBlock {
     
     /// Location of the mask template string in the mask template.
     
-    public var templateRange: NSRange {
+     var templateRange: NSRange {
         return NSMakeRange(chars.first!.templateRange.location, chars.count)
     }
     

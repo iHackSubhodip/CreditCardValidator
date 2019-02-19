@@ -1,36 +1,28 @@
+//
+//  CreditCardTextField.swift
+//  CreditCardValidator
+//
+//  Created by Banerjee,Subhodip on 19/02/19.
+//  Copyright © 2019 Banerjee,Subhodip. All rights reserved.
+//
 
+import Foundation
 import UIKit
 
-open class AKMaskField: UITextField, UITextFieldDelegate  {
+class CreditCardTextField: UITextField, UITextFieldDelegate  {
     
     //  MARK: - Configuring the Mask Field
     
-    /**
-     
-     The string value that has blocks with pattern symbols that determine the certain format of input data. Wrap each mask block with proper bracket character.
-     
-     The predetermined formats (Mask symbol : Input format):
-    
-     - d : Number, decimal number from 0 to 9
-     - D : Any symbol, except decimal number
-     - W : Not an alphabetic symbol
-     - a : Alphabetic symbol, a-Z
-     - . : Corresponds to any symbol (default)
-
-     Default value of this property is `nil`.
-     
-     */
-    
     var isVisited = false
     
-    @IBInspectable open var maskExpression: String? {
+    @IBInspectable  var maskExpression: String? {
         didSet {
             
             if guardMask {
                 return
             }
             
-            let brackets = AKMaskFieldUtility.matchesInString(maskExpression!, pattern: "(?<=\\\(maskBlockBrackets.left)).*?(?=\\\(maskBlockBrackets.right))")
+            let brackets = CreditCardTextFieldUtility.matchesInString(maskExpression!, pattern: "(?<=\\\(maskBlockBrackets.left)).*?(?=\\\(maskBlockBrackets.right))")
             
             if brackets.isEmpty {
                 return
@@ -38,19 +30,19 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             
             delegate = self
             
-            // Save initial text 
+            // Save initial text
             
             maskTemplateText = maskExpression
             
             // Create mast object
-
-            maskBlocks = [AKMaskFieldBlock]()
+            
+            maskBlocks = [CreditCardTextFieldBlock]()
             
             for (i, bracket) in brackets.enumerated() {
                 
                 // Characters
                 
-                var characters = [AKMaskFieldBlockCharacter]()
+                var characters = [CreditCardTextFieldBlockCharacter]()
                 
                 for y in 0..<bracket.range.length {
                     
@@ -58,9 +50,9 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     var templateRange = patternRange
                     templateRange.location -=  i * 2 + 1
                     
-                    let pattern = AKMaskFieldPatternCharacter(rawValue: AKMaskFieldUtility.substring(maskExpression, withNSRange: patternRange))
+                    let pattern = CreditCardTextFieldPattern(rawValue: CreditCardTextFieldUtility.substring(maskExpression, withNSRange: patternRange))
                     
-                    characters.append(AKMaskFieldBlockCharacter(
+                    characters.append(CreditCardTextFieldBlockCharacter(
                         index : y,
                         blockIndex : i,
                         status : .clear,
@@ -72,7 +64,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 
                 // Blocks
                 
-                maskBlocks.append(AKMaskFieldBlock(
+                maskBlocks.append(CreditCardTextFieldBlock(
                     index : i,
                     chars : characters))
                 
@@ -82,10 +74,6 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             // Refresh field & text
             
             updateMaskTemplateText()
-            
-            #if AKMaskFieldDEBUG
-                debugmaskBlocks()
-            #endif
         }
     }
     
@@ -93,20 +81,9 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     fileprivate var maskTemplateDefault: Character = "*"
     
-    /**
-     
-     The text that represents the mask filed with replacing mask symbol by template character.
-    
-     - 1 : Template character will be copied to each mask block with repeating equal block length.
-     - Equal : Template length equal to mask without brackets. Template characters will replace mask blocks in same range.
-    
-     Default value of this property is `*`.
-     
-    */
-    
-    @IBInspectable open var maskTemplate: String = "*" {
+    @IBInspectable  var maskTemplate: String = "*" {
         didSet {
-
+            
             if guardMask {
                 return
             }
@@ -127,7 +104,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 for char in block.chars {
                     maskBlocks[char.blockIndex].chars[char.index].template = copy
                         ? Character(_maskTemplate)
-                        : Character(AKMaskFieldUtility.substring(maskTemplate, withNSRange: char.templateRange))
+                        : Character(CreditCardTextFieldUtility.substring(maskTemplate, withNSRange: char.templateRange))
                 }
                 
                 updateMaskTemplateTextFromBlock(block.index)
@@ -142,32 +119,32 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     /**
      
      Use this method to set the mask and template parameters.
-    
+     
      - parameter mask : The string value that has blocks with symbols that determine the certain format of input data.
      - parameter maskTemplate : The text that represents the mask filed with replacing mask symbol by template character.
      
-    */
+     */
     
-    public func setMask(_ mask: String, withMaskTemplate maskTemplate: String!) {
+    func setMask(_ mask: String, withMaskTemplate maskTemplate: String!) {
         maskExpression = mask
         self.maskTemplate = maskTemplate ?? String(maskTemplateDefault)
     }
-
+    
     /**
      
-     Open and close bracket character for the mask block.
-    
+      and close bracket character for the mask block.
+     
      Default value of this property is `{` and `}`.
      
      */
     
-    open var maskBlockBrackets: AKMaskFieldBrackets = AKMaskFieldBrackets(left: "{", right: "}")
+     var maskBlockBrackets: CreditCardTextFieldBraces = CreditCardTextFieldBraces(left: "{", right: "}")
     
     //  MARK: - Mask Field actions
     
     /// Set new text for the mask field. Equal to select all and paste actions.
     
-    open override var text: String?  {
+     override var text: String?  {
         didSet {
             
             guard let maskText = maskText else {
@@ -181,7 +158,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// Manually refresh the mask field
     
-    open func refreshMask() {
+     func refreshMask() {
         
         if guardMask {
             return
@@ -200,17 +177,9 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         moveCarret()
     }
     
-    //  MARK: - Accessing the Delegate
+    weak var maskDelegate: CreditCardTextFieldDelegate?
     
-    /// The receiver’s delegate.
-    
-    open weak var maskDelegate: AKMaskFieldDelegate?
-    
-    //  MARK: - Getting the Mask Field status
-    
-    /// Returns the current status of the mask field. The value of the property is a constant.
-    
-    open var maskStatus: AKMaskFieldStatus {
+     var maskStatus: CreditCardTextFieldStatus {
         
         let maskBlocksChars = maskBlocks.flatMap { $0.chars }
         let completedChars  = maskBlocksChars.filter { $0.status == .complete }
@@ -222,17 +191,14 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         }
     }
     
-    //  MARK: - Getting the Mask Field object
     
-    /// Returns an array containing all the Mask Field blocks.
-    
-    open var maskBlocks: [AKMaskFieldBlock] = [AKMaskFieldBlock]()
+     var maskBlocks: [CreditCardTextFieldBlock] = [CreditCardTextFieldBlock]()
     
     //  MARK: - Options
     
     /// Jumps to previous block when cursor is placed between brackets or before first character in current block.
     
-    open var jumpToPrevBlock: Bool = false
+     var jumpToPrevBlock: Bool = false
     
     //  MARK: - Displayed Properties
     
@@ -240,20 +206,11 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     fileprivate var maskTemplateText: String!
     
-    open override var placeholder: String?  {
+     override var placeholder: String?  {
         didSet {
             refreshMask()
         }
     }
-    
-    //  MARK: - Life cycle
-    
-    deinit {
-        #if AKMaskFieldDEBUG
-            print("\(type(of: self)) \(#function)")
-        #endif
-    }
-    
     //  MARK: - Helper methods & Properties
     
     fileprivate var guardMask: Bool {
@@ -273,7 +230,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// Returns next character from target location
     
-    fileprivate func getNetCharacter(_ chars: [AKMaskFieldBlockCharacter], fromLocation location: Int) -> (char: AKMaskFieldBlockCharacter, outsideBlock: Bool) {
+    fileprivate func getNetCharacter(_ chars: [CreditCardTextFieldBlockCharacter], fromLocation location: Int) -> (char: CreditCardTextFieldBlockCharacter, outsideBlock: Bool) {
         
         var nextBlockIndex: Int!
         
@@ -300,14 +257,14 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// Check if current character match with pattern
     
-    fileprivate func matchTextCharacter(_ textCharacter: Character, withMaskCharacter maskCharacter: AKMaskFieldBlockCharacter) -> Bool {
-        return !AKMaskFieldUtility
+    fileprivate func matchTextCharacter(_ textCharacter: Character, withMaskCharacter maskCharacter: CreditCardTextFieldBlockCharacter) -> Bool {
+        return !CreditCardTextFieldUtility
             .matchesInString(String(textCharacter),
                              pattern: maskCharacter.pattern.pattern()).isEmpty
     }
     
     fileprivate func updateMaskTemplateText() {
-        AKMaskFieldUtility
+        CreditCardTextFieldUtility
             .replacingOccurrencesOfString(&maskTemplateText,
                                           target     : "[\(maskBlockBrackets.left)\(maskBlockBrackets.right)]",
                 withString : "")
@@ -319,13 +276,13 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     fileprivate func updateMaskTemplateTextFromBlock(_ index: Int) {
         
-        AKMaskFieldUtility
+        CreditCardTextFieldUtility
             .replace(&maskTemplateText,
                      withString : maskBlocks[index].template,
                      inRange    : maskBlocks[index].patternRange)
     }
     
-    fileprivate struct AKMaskFieldProcessedBlock {
+    fileprivate struct CreditCardTextFieldProcessedBlock {
         var range  : NSRange?
         var string : String = ""
     }
@@ -339,16 +296,16 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         case .complete    : position = maskBlocks.last!.templateRange.upperBound
         }
         
-        AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
+        CreditCardTextFieldUtility.maskField(self, moveCaretToPosition: position)
     }
-
+    
     //  MARK: - UITextFieldDelegate
     
-    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return maskDelegate?.maskFieldShouldBeginEditing(self) ?? true
     }
     
-    open func textFieldDidBeginEditing(_ textField: UITextField) {
+     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         maskDelegate?.maskFieldDidBeginEditing(self)
         
@@ -357,15 +314,15 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         moveCarret()
     }
     
-    open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return maskDelegate?.maskFieldShouldEndEditing(self) ?? true
     }
     
-    open func textFieldDidEndEditing(_ textField: UITextField) {
+     func textFieldDidEndEditing(_ textField: UITextField) {
         maskDelegate?.maskFieldDidEndEditing(self)
     }
     
-    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // CHECKS
         
@@ -378,34 +335,21 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         
         let maskBlocksChars = maskBlocks.flatMap { $0.chars }
         
-        
-        // EVENTS
-        
-        var event: AKMaskFieldEvent!
+        var event: CreditCardTextFieldEvents!
         
         var completed: Int = 0
         var cleared: Int   = 0
         
-        // PREPARE BLOCKS FOR USER PROCESSING
+        var processedBlocks = [CreditCardTextFieldProcessedBlock]()
         
-        var processedBlocks = [AKMaskFieldProcessedBlock]()
-        
-        // - - - - - - - - - - - -
-        // STEP 1
-        // Selected range
-        
-        // Find blocks with text which must be reset
-        
-        // a) Prepare an array with interserted ranges
-        
-        let intersertRanges = AKMaskFieldUtility
+        let intersertRanges = CreditCardTextFieldUtility
             .findIntersection(maskBlocks.map { return $0.templateRange }, withRange: range)
         
         // b) Create an array with interserted blocks
         
         for (i, intersertRange) in intersertRanges.enumerated() {
             
-            var processedBlock = AKMaskFieldProcessedBlock()
+            var processedBlock = CreditCardTextFieldProcessedBlock()
             processedBlock.range = intersertRange
             
             if let intersertRange = intersertRange {
@@ -434,7 +378,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 
                 // Check if replacement character match to mask template character in same location
                 
-                if replacementCharacter != Character(AKMaskFieldUtility.substring(maskTemplateText, withNSRange: NSMakeRange(location, 1))) &&
+                if replacementCharacter != Character(CreditCardTextFieldUtility.substring(maskTemplateText, withNSRange: NSMakeRange(location, 1))) &&
                     replacementCharacter != " " {
                     
                     savedLocation = location
@@ -466,7 +410,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             
             location += 1
         }
-                
+        
         // USER PROCESSING
         
         for (i, processedBlock) in processedBlocks.enumerated() {
@@ -493,7 +437,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     if  processedBlock.range!.location != _range.location ||
                         processedBlock.range!.length   != _range.length {
                         
-                        if let validatedRange = AKMaskFieldUtility
+                        if let validatedRange = CreditCardTextFieldUtility
                             .findIntersection([maskBlocks[i].templateRange], withRange: _range).first! as NSRange? {
                             
                             _range = validatedRange
@@ -527,7 +471,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     // UPDATE MASK TEXT
                     
                     // Replacement string
-
+                    
                     if !_string.isEmpty {
                         
                         var maskTextRange = NSMakeRange(_range.location, _string.count)
@@ -544,7 +488,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         
                         // Mask text
                         
-                        AKMaskFieldUtility
+                        CreditCardTextFieldUtility
                             .replace(&maskText,
                                      withString : _string,
                                      inRange    : maskTextRange)
@@ -579,10 +523,10 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         
                         maskTextRange.location += maskBlocks[i].templateRange.location
                         
-                        let cuttedTempalte = AKMaskFieldUtility
+                        let cuttedTempalte = CreditCardTextFieldUtility
                             .substring(maskTemplateText, withNSRange: maskTextRange)
                         
-                        AKMaskFieldUtility
+                        CreditCardTextFieldUtility
                             .replace(&maskText,
                                      withString : cuttedTempalte,
                                      inRange    : maskTextRange)
@@ -596,15 +540,16 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         
         // DISPLAYED TEXT
         refreshMask()
+        
         if maskStatus == .complete{
             isVisited = true
         }else{
             isVisited = false
         }
-
+        
         if jumpToPrevBlock {
             for (i, maskBlock) in maskBlocks.enumerated().reversed() {
-
+                
                 if i > 0 {
                     
                     let min = maskBlock.templateRange.location
@@ -620,7 +565,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             }
         }
         
-        AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
+        CreditCardTextFieldUtility.maskField(self, moveCaretToPosition: location)
         
         // EVENT
         
@@ -639,140 +584,13 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         return false
     }
     
-    open func textFieldShouldClear(_ textField: UITextField) -> Bool {
+     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         text = nil
         
         return false
     }
     
-    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return maskDelegate?.maskFieldShouldReturn(self) ?? true
-    }
-    
-    fileprivate func debugmaskBlocks() {
-        for block in maskBlocks {
-            print("BLOCK :")
-            print("index          : \(block.index)")
-            print("status         : \(block.status)")
-            print("pattern        : \(block.pattern)")
-            print("patternRange   : \(block.patternRange)")
-            print("template       : \(block.template)")
-            print("templateRange  : \(block.templateRange)")
-            print("CHARS :")
-            for char in block.chars {
-                print("   index           : \(char.index)")
-                print("   blockIndex      : \(char.blockIndex)")
-                print("   status          : \(char.status)")
-                print("   pattern         : \(char.pattern)")
-                print("   patternRange    : \(char.patternRange)")
-                print("   template        : \(char.template)")
-                print("   templateRange   : \(char.templateRange)")
-            }
-            print("")
-        }
-    }
-}
-
-//  MARK: - AKMaskFieldDelegate
-
-public protocol AKMaskFieldDelegate: class {
-    
-    /**
-     
-     Asks the delegate if editing should begin in the specified mask field.
-    
-     - parameter maskField : The mask field in which editing is about to begin.
-     
-    */
-    
-    func maskFieldShouldBeginEditing(_ maskField: AKMaskField) -> Bool
-
-    /**
- 
-     Asks the delegate if editing should begin in the specified mask field.
-    
-     - parameter maskField : The mask field in which editing is about to begin.
- 
-     */
-    
-    func maskFieldDidBeginEditing(_ maskField: AKMaskField)
-    
-    /**
- 
-     Asks the delegate if editing should stop in the specified mask field.
-    
-     - parameter maskField : The mask field in which editing is about to end.
- 
-     */
-    
-    func maskFieldShouldEndEditing(_ maskField: AKMaskField) -> Bool
-    
-    /**
- 
-     Tells the delegate that editing stopped for the specified mask field.
-    
-     - parameter maskField : The mask field for which editing ended.
- 
-     */
-    
-    func maskFieldDidEndEditing(_ maskField: AKMaskField)
-
-    /**
-     
-     Tells the delegate that specified mask field change text with event.
-    
-     - parameter maskField : The mask field for which event changed.
-     - parameter event : Event constant value received after manipulations.
-    
-    */
-    
-    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent)
-    
-    /**
-     
-     Asks the delegate if the specified mask block should be changed.
-    
-     - parameter maskField : The mask field containing the text.
-     - parameter block : Target block
-     - parameter range : The range of characters to be replaced (inout parameter).
-     - parameter string : The replacement string for the specified range (inout parameter).
-    
-    */
-    
-    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool
-    
-    /**
-     
-     Asks the delegate if the mask field should process the pressing of the return button.
-    
-     - parameter maskField : The mask field whose return button was pressed.
-    
-    */
-    
-    func maskFieldShouldReturn(_ maskField: AKMaskField) -> Bool
-}
-
-public extension AKMaskFieldDelegate {
-    
-    func maskFieldShouldBeginEditing(_ maskField: AKMaskField) -> Bool {
-        return true
-    }
-    
-    func maskFieldDidBeginEditing(_ maskField: AKMaskField) {}
-    
-    func maskFieldShouldEndEditing(_ maskField: AKMaskField) -> Bool {
-        return true
-    }
-    
-    func maskFieldDidEndEditing(_ maskField: AKMaskField) {}
-    
-    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {}
-    
-    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
-        return true
-    }
-    
-    func maskFieldShouldReturn(_ maskField: AKMaskField) -> Bool {
-        return true
     }
 }

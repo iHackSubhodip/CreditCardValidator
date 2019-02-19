@@ -1,8 +1,12 @@
+//
+//  CreditCardTextFieldPattern.swift
+//  CreditCardValidator
+//
+//  Created by Banerjee,Subhodip on 19/02/19.
+//  Copyright © 2019 Banerjee,Subhodip. All rights reserved.
+//
 
-
-/// Single block character pattern constant.
-
-public enum AKMaskFieldPatternCharacter: String {
+enum CreditCardTextFieldPattern: String {
     
     //  MARK: - Constants
     
@@ -14,7 +18,7 @@ public enum AKMaskFieldPatternCharacter: String {
     
     /// Returns regular expression pattern.
     
-    public func pattern() -> String {
+    func pattern() -> String {
         switch self {
         case .NumberDecimal   : return "\\d"
         case .NonDecimal      : return "\\D"

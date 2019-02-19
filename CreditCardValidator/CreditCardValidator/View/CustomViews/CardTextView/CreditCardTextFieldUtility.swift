@@ -1,10 +1,17 @@
+//
+//  CreditCardTextFieldUtility.swift
+//  CreditCardValidator
+//
+//  Created by Banerjee,Subhodip on 19/02/19.
+//  Copyright © 2019 Banerjee,Subhodip. All rights reserved.
+//
 
 import UIKit
 
-public class AKMaskFieldUtility {
+ class CreditCardTextFieldUtility {
     
     /// [Source](http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index)
-    public class func rangeFromString(_ string: String, nsRange: NSRange) -> Range<String.Index>! {
+     class func rangeFromString(_ string: String, nsRange: NSRange) -> Range<String.Index>! {
         
         
         guard
@@ -16,22 +23,22 @@ public class AKMaskFieldUtility {
         return from ..< to
     }
     
-    public class func substring(_ sourceString: String?, withNSRange range: NSRange) -> String {
+     class func substring(_ sourceString: String?, withNSRange range: NSRange) -> String {
         guard let sourceString = sourceString else {
             return ""
         }
         return sourceString.substring(with: rangeFromString(sourceString, nsRange: range))
     }
     
-    public class func replace(_ sourceString: inout String!, withString string: String, inRange range: NSRange) {
+     class func replace(_ sourceString: inout String!, withString string: String, inRange range: NSRange) {
         sourceString = sourceString.replacingCharacters(in: rangeFromString(sourceString, nsRange: range), with: string)
     }
     
-    public class func replacingOccurrencesOfString(_ string: inout String!, target: String, withString replacement: String) {
+     class func replacingOccurrencesOfString(_ string: inout String!, target: String, withString replacement: String) {
         string = string.replacingOccurrences(of: target, with: replacement, options: .regularExpression, range: nil)
     }
     
-    public class func maskField(_ maskField: UITextField, moveCaretToPosition position: Int) {
+     class func maskField(_ maskField: UITextField, moveCaretToPosition position: Int) {
         guard let caretPosition = maskField.position(from: maskField.beginningOfDocument, offset: position) else {
             return
         }
@@ -39,13 +46,13 @@ public class AKMaskFieldUtility {
         maskField.selectedTextRange = maskField.textRange(from: caretPosition, to: caretPosition)
     }
     
-    public class func matchesInString(_ string: String, pattern: String) -> [NSTextCheckingResult] {
+     class func matchesInString(_ string: String, pattern: String) -> [NSTextCheckingResult] {
         return  try!
             NSRegularExpression(pattern: pattern, options: .caseInsensitive)
                 .matches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.count))
     }
     
-    public class func findIntersection(_ ranges: [NSRange], withRange range: NSRange) -> [NSRange?] {
+     class func findIntersection(_ ranges: [NSRange], withRange range: NSRange) -> [NSRange?] {
         
         var intersectRanges = [NSRange?]()
         
@@ -73,5 +80,5 @@ public class AKMaskFieldUtility {
             intersectRanges.append(intersectRange)
         }
         return intersectRanges
-    } 
+    }
 }

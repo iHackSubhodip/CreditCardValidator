@@ -37,8 +37,8 @@ class CreditCardView: UIView {
         return creditCardFrontView
     }()
     
-    var cardNumberview: AKMaskField = {
-        let cardNumber = AKMaskField()
+    var cardNumberview: CreditCardTextField = {
+        let cardNumber = CreditCardTextField()
         cardNumber.translatesAutoresizingMaskIntoConstraints = false
         cardNumber.font = UIFont(name: "Menlo Bold", size: 17.0)
         cardNumber.frame = .zero
@@ -80,28 +80,28 @@ class CreditCardView: UIView {
     
     
     @IBInspectable
-    public var defaultCardColor: UIColor = UIColor.hexStr(hexStr: "363434", alpha: 1) {
+     var defaultCardColor: UIColor = UIColor.hexStr(hexStr: "363434", alpha: 1) {
         didSet {
             gradientLayer.colors = [defaultCardColor.cgColor, defaultCardColor.cgColor]
         }
     }
     
     @IBInspectable
-    public var cardNumberMaskExpression = "{....} {....} {....} {....}" {
+     var cardNumberMaskExpression = "{....} {....} {....} {....}" {
         didSet {
             cardNumberview.maskExpression = cardNumberMaskExpression
         }
     }
     
     @IBInspectable
-    public var cardNumberMaskTemplate = "XXXX XXXX XXXX XXXX" {
+     var cardNumberMaskTemplate = "XXXX XXXX XXXX XXXX" {
         didSet {
             cardNumberview.maskTemplate = cardNumberMaskTemplate
         }
     }
     
     @IBInspectable
-    public var cardHolderExpireDateColor: UIColor = .white {
+     var cardHolderExpireDateColor: UIColor = .white {
         didSet {
             cardNumberview.textColor = cardHolderExpireDateColor
         }
@@ -116,7 +116,7 @@ class CreditCardView: UIView {
         super.init(coder: aDecoder)
     }
     
-    public override func layoutSubviews() {
+     override func layoutSubviews() {
         super.layoutSubviews()
         createCreditCardViews()
     }
@@ -139,7 +139,7 @@ class CreditCardView: UIView {
     
 
     
-    public func paymentCardTextFieldDidChange(cardNumber: String? = "") {
+     func paymentCardTextFieldDidChange(cardNumber: String? = "") {
         
         self.cardNumberview.text = cardNumber
         creditCardProceedButton.isHidden = true

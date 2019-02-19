@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-extension CreditCardView: AKMaskFieldDelegate{
+extension CreditCardView: CreditCardTextFieldDelegate{
     
-    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
+    func maskField(_ maskField: CreditCardTextField, shouldChangeBlock block: CreditCardTextFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
         if maskField == cardNumberview {
             let allowedCharacters = CharacterSet(charactersIn:"0123456789")
             let characterSet = CharacterSet(charactersIn: string)
@@ -21,7 +21,7 @@ extension CreditCardView: AKMaskFieldDelegate{
         return true
     }
     
-    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
+    func maskField(_ maskField: CreditCardTextField, didChangedWithEvent event: CreditCardTextFieldEvents) {
         paymentCardTextFieldDidChange(cardNumber: maskField.text)
     }
     

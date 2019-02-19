@@ -11,7 +11,7 @@ import UIKit
 
 class CreditCardValidator{
     
-    public lazy var types: [CreditCardValidationType] = {
+     lazy var types: [CreditCardValidationType] = {
         var types = [CreditCardValidationType]()
         for object in CreditCardValidator.types {
             types.append(CreditCardValidationType(dict: object))
@@ -19,7 +19,7 @@ class CreditCardValidator{
         return types
     }()
     
-    public init() { }
+     init() { }
     
 
     func type(from string: String) -> CreditCardValidationType? {
