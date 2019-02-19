@@ -46,12 +46,9 @@ extension CreditCardView{
         
         NSLayoutConstraint.activate([
             cardNumberview.centerXAnchor.constraint(equalTo: creditCardFrontView.centerXAnchor),
-            cardNumberview.centerYAnchor.constraint(equalTo: creditCardFrontView.centerYAnchor)
+            cardNumberview.centerYAnchor.constraint(equalTo: creditCardFrontView.centerYAnchor, constant: -15),
+            cardNumberview.leadingAnchor.constraint(equalTo: creditCardFrontView.leadingAnchor, constant: 30)
             ])
-        
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(==220)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
-        
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(==30)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": cardNumberview]));
     }
     
     
