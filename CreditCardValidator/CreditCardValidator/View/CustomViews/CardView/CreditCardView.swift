@@ -57,7 +57,7 @@ class CreditCardView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .white
-        button.setTitle("Proceed", for: .normal)
+        button.setTitle("Verify now", for: .normal)
         button.setTitleColor(UIColor.hexStr(hexStr: "#3545AE", alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Menlo Regular", size: 10.0)
         button.layer.cornerRadius = 6
@@ -68,7 +68,7 @@ class CreditCardView: UIView {
     var creditCardInvalidLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Card info not found"
+        label.text = "Card info not found."
         label.font = UIFont(name: "Menlo Bold", size: 9.0)
         label.textColor = .white
         return label
@@ -157,28 +157,26 @@ class CreditCardView: UIView {
         let validator = CreditCardValidator()
         if (cardN.count >= 7 || cardN.count < 4) {
             
-            if cardNumberview.maskStatus == .complete{
-                let isCardValid = validator.validate(string: "\(cardN as String?)")
-                if isCardValid{
-                    creditCardProceedButton.isHidden = false
-                }else{
-                    creditCardInvalidLabel.isHidden = false
-                    self.cardBrandImageView.image = nil
-                    setType(colors: [defaultCardColor, defaultCardColor], alpha: 0.5)
-                    return
-                }
-            }
-            
             guard let type = validator.type(from: "\(cardN as String?)") else {
-                self.cardBrandImageView.image = nil
+                self.cardBrandImageView.image = UIImage(named: "default")
                 if let name = colors["NONE"] {
                     setType(colors: [name[0], name[1]], alpha: 0.5)
                 }
                 return
             }
             
-            // Visa, Mastercard, Amex etc.
             if let name = colors[type.name] {
+                
+                if cardNumberview.maskStatus == .complete{
+                    let isCardValid = validator.validate(string: "\(cardN as String?)")
+                    if isCardValid{
+                        creditCardProceedButton.isHidden = false
+                    }else{
+                        creditCardInvalidLabel.isHidden = false
+                        return
+                    }
+                }
+                
                 if(type.name.lowercased() == "amex".lowercased()){
                     if !amexCard {
                         amexCard = true
@@ -189,6 +187,7 @@ class CreditCardView: UIView {
                 self.cardBrandImageView.image = UIImage(named: type.name)
                 setType(colors: [name[0], name[1]], alpha: 1)
             }else{
+                creditCardInvalidLabel.isHidden = false
                 setType(colors: [self.colors["DEFAULT"]![0], self.colors["DEFAULT"]![0]], alpha: 1)
             }
             
