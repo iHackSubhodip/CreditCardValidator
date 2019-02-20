@@ -13,9 +13,4 @@ enum CreditCardBrands : String {
     case NONE, Visa, Mastercard, Amex, DEFAULT, Discover
 }
 
-enum CardError: Error {
-    case unsupported
-    case invalid
-}
-
 

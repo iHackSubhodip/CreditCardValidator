@@ -22,6 +22,7 @@
 		909AEEAC221BE4B700873669 /* CreditCardTextFieldBlockHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AEEAB221BE4B700873669 /* CreditCardTextFieldBlockHelper.swift */; };
 		909AEEAE221BE56800873669 /* CreditCardTextFieldPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AEEAD221BE56800873669 /* CreditCardTextFieldPattern.swift */; };
 		909AEEB0221BE58500873669 /* CreditCardTextFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AEEAF221BE58500873669 /* CreditCardTextFieldUtility.swift */; };
+		90B06711221D4283006CBC35 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 90B06710221D4283006CBC35 /* README.md */; };
 		90B34EC422156C580073C23E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B34EC322156C580073C23E /* BaseViewController.swift */; };
 		90B34EC722156D020073C23E /* BaseView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90B34EC622156D020073C23E /* BaseView.storyboard */; };
 		90B34ECA221575500073C23E /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B34EC9221575500073C23E /* CreditCardView.swift */; };
@@ -59,6 +60,7 @@
 		909AEEAB221BE4B700873669 /* CreditCardTextFieldBlockHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTextFieldBlockHelper.swift; sourceTree = "<group>"; };
 		909AEEAD221BE56800873669 /* CreditCardTextFieldPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTextFieldPattern.swift; sourceTree = "<group>"; };
 		909AEEAF221BE58500873669 /* CreditCardTextFieldUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardTextFieldUtility.swift; sourceTree = "<group>"; };
+		90B06710221D4283006CBC35 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		90B34EC322156C580073C23E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		90B34EC622156D020073C23E /* BaseView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = BaseView.storyboard; path = CreditCardValidator/StoryBoards/BaseView.storyboard; sourceTree = SOURCE_ROOT; };
 		90B34EC9221575500073C23E /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				905F9F612215544D0031AAA2 /* Assets.xcassets */,
+				90B06710221D4283006CBC35 /* README.md */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			files = (
 				905F9F652215544D0031AAA2 /* LaunchScreen.storyboard in Resources */,
 				90B34EC722156D020073C23E /* BaseView.storyboard in Resources */,
+				90B06711221D4283006CBC35 /* README.md in Resources */,
 				905F9F622215544D0031AAA2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

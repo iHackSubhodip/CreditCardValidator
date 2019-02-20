@@ -1,2 +1,0 @@
-# CreditCardValidator
-Credit Vard validator
