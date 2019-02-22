@@ -42,6 +42,7 @@ class CreditCardView: UIView {
         cardNumber.translatesAutoresizingMaskIntoConstraints = false
         cardNumber.font = UIFont(name: "Menlo Bold", size: 17.0)
         cardNumber.frame = .zero
+        cardNumber.keyboardType = .numberPad
         return cardNumber
     }()
     
@@ -161,6 +162,10 @@ class CreditCardView: UIView {
                 self.cardBrandImageView.image = UIImage(named: "default")
                 if let name = colors["NONE"] {
                     setType(colors: [name[0], name[1]], alpha: 0.5)
+                }
+                if cardNumberview.maskStatus == .complete{
+                    creditCardInvalidLabel.isHidden = false
+                    creditCardInvalidLabel.text = "Invalid card."
                 }
                 return
             }
